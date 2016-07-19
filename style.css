@@ -1,0 +1,45 @@
+body{
+	background-color: #AAAAAA;
+	font-size: 20px;
+}
+
+.container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid red;
+	width: 60vw;
+	padding: 20px;
+}
+
+.question{
+	font-size: 30px;
+/*border-bottom: 3px solid black;*/
+}
+
+ul {
+	list-style-type: none;
+	margin: 10px 0;
+	text-align: center;
+}
+
+li li {
+	display: inline-block;
+	width: 20%;
+	padding: 10px 15px;
+	margin: 0 3px;
+	border: 1px solid;
+	cursor: pointer;
+}
+
+li li:hover {
+	background: #ecd;;
+}
+
+button {
+	padding: 10px 100px;
+	cursor: pointer;
+	border: none;
+	font-size: 18px;
+}

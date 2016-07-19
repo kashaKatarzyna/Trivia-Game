@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Trivia</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</head>
+<body ng-app="trivia-app">
+
+	<!-- if the users strikes is more then 0 we will  -->
+	<!-- dispalay the question in order from the array. track by index will also show any duplicates if there are any.  -->
+	<!-- index = idx will show each index one by one  -->
+	<div class="container" ng-controller="myCtrl">
+		<p>
+			<span>Timer: {{counter}}</span>
+			<span>Strikes: {{user.strike}}</span>
+			<span>Points: {{user.points}}</span>
+		</p>
+		<ul ng-if="user.strike !== 0">
+			<li ng-repeat="obj in qs track by $index" ng-show="$index === idx">
+				<p class="question">{{obj.question}}</p>
+				<hr>
+				<ul>
+					<!-- display the answers array from the object. -->
+					<!-- when an answer is clicked it willl invoke the function in the controller and pass in the current question and correct answer. -->
+					<li ng-repeat="answer in obj.answers track by $index">
+						<span ng-click="correctAnswer(answer, obj.correct)">{{answer}}</span>
+					</li>
+				</ul>
+				<button type="button" name="button" ng-click="filterArr(obj)" ng-hide="helpFromAudience">Help</button>
+
+			</li>
+		</ul>
+		<p ng-show="stop">Sorry, You lose</p>
+		<p ng-show="winner">CONGRATS!! Your Points: {{user.points}}</p>
+
+	</div>
+	<script src="app.js"></script>
+</body>
+</html>
