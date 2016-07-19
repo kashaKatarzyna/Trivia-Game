@@ -25,9 +25,9 @@
 				<ul>
 					<!-- display the answers array from the object. -->
 					<!-- when an answer is clicked it willl invoke the function in the controller and pass in the current question and correct answer. -->
-					<li ng-repeat="answer in obj.answers track by $index">
-						<span ng-click="correctAnswer(answer, obj.correct)">{{answer}}</span>
-					</li>
+					<li ng-repeat="answer in obj.answers track by $index" ng-click="correctAnswer(answer, obj.correct)">
+           {{answer}}
+          </li>
 				</ul>
 				<button type="button" name="button" ng-click="filterArr(obj)" ng-hide="helpFromAudience">Help</button>
 
