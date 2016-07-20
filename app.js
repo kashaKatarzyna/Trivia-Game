@@ -1,8 +1,8 @@
 var app = angular.module('trivia-app', []);
 
 
-//factory will hold an array of object where each object is our question and array of possible answers.
-//factory must be passed in to our controller which will allow it to use whatver is inside our factory
+//arr of obj of our qs and answ.
+//inj into controller so can be used across our app
 app.factory('quiz', function(){
 	var questions= [
       {
@@ -12,7 +12,7 @@ app.factory('quiz', function(){
       },
       {
         question: "What sound do cats make?",
-        answers: ["Woof", "Meeeh", "Kukuryku", "Meow"],
+        answers: ["Woof", "Mooo", "Kukuryku", "Meow"],
         correct: "Meow"
       },
       {
@@ -59,51 +59,21 @@ app.factory('quiz', function(){
 		return questions;
 });
 
-//controller will hold all the logic of our app
-//assigning the questions array in quizz factory to qs scope
-//index number in array is scope idx and start at 0
-//user has points and how many times can answer wrong
-//assigning timer to 0
+
+//cntrl holds all the logic
 app.controller('myCtrl', ['$scope', 'quiz', '$timeout', function($scope, quiz, $timeout) {
-	$scope.qs = quiz;
-	$scope.idx = 0;
-	$scope.user = {
-		points: 0,
-		strike: 3
-	};
-	$scope.counter = 60;
-	$scope.helpFromAudience = false;
+  $scope.qs = quiz;
+  $scope.idx = 0;
+  $scope.counter = 60;
+  $scope.helpFromAudience = false;
+  $scope.user = {
+    points: 0,
+    strike: 3
+  };
 
-  var onTimeout = function(){
-    $scope.counter--;
-    timeout = $timeout(onTimeout, 1000);
-		if ($scope.counter < 0) {
-			$scope.user.strike !== 0 ? $scope.user.strike -= 1 : $timeout.cancel(timeout);
-			$scope.change();
-		}
-  }
 
-	var timeout = $timeout(onTimeout, 1000);
-
-	//this fnc is invoked when user answers the correct answer.
-	//when user reaches 0 points its end of the game so...
-	//..in index.html will change ng show from false to true and will display end of game
-	// =  ($scope.idx + 1) % $scope.qs.length;
-	$scope.change = function() {
-		if ($scope.user.strike === 0) {
-			$scope.stop = true;
-		} else {
-			$scope.idx++;
-			$scope.idx === $scope.qs.length ? $scope.winner = true : $scope.winner = false;
-		}
-		$scope.counter = 60;
-	};
-
-	//this fnc is invoked when user click on the correct answer from html
-	//if slected ansewer is equal to correct answer in the array then...
-	//... assign 10 points to the user
-	//if answer is not correct substract the number of strikes
-	//after condition is met then invoke this function
+  // invoked when correct answer is selected
+  // add or remove points
 	$scope.correctAnswer = function (answer,correct){
 		if(answer === correct){
 			$scope.user.points += 10;
@@ -113,12 +83,54 @@ app.controller('myCtrl', ['$scope', 'quiz', '$timeout', function($scope, quiz, $
 		$scope.change();
 	};
 
-	$scope.filterArr = function(obj) {
-		// remove help button
-		$scope.helpFromAudience = true;
-		//remove coorrect answer
-		obj.answers.splice(obj.answers.indexOf(obj.correct), 1);
-		// assigning new values correct and random
+
+//counter fnc. after 60 sec removes a strike
+  var onTimeout = function(){
+    $scope.counter--;
+    timeout = $timeout(onTimeout, 1000);
+
+    if ($scope.counter < 0) {
+      if ($scope.user.strike !== 0) {
+        $scope.user.strike -= 1  
+
+      } else {
+        $timeout.cancel(timeout);
+      }
+      $scope.change();
+    }
+  };
+  //timeout available in global scope, below the fnc bc otherwise the counter wont count
+  var timeout = $timeout(onTimeout, 1000);
+
+
+  // change questions
+  $scope.change = function() {
+    if ($scope.user.strike === 0) {
+      $scope.stop = true;
+      $scope.winnersEnd = true;
+
+    } else {
+      $scope.idx++;
+
+      if($scope.idx === $scope.qs.length){
+       $timeout.cancel(timeout)
+       $scope.winner = true;
+       $scope.winnersEnd = true;  
+      } else{
+        $scope.winner = false;
+      }
+    }
+    $scope.counter = 60;
+  };
+
+
+	// remove help button
+	// assigning new values correct and random
+  $scope.filterArr = function(obj) {
+    $scope.helpFromAudience = true;
 		obj.answers = [obj.correct, obj.answers[Math.floor(Math.random() * obj.answers.length)]];
+    //remove coorrect answer
+    // obj.answers.splice(obj.answers.indexOf(obj.correct), 1);
 	};
-}]);
+  
+}]);  //myCtr closing

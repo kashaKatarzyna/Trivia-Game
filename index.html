@@ -3,38 +3,46 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Trivia</title>
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
 	<link rel="stylesheet" href="style.css">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
+
 </head>
 <body ng-app="trivia-app">
+<img src="images/dog.jpg" class="picture">
+<div class="layer"></div>
 
-	<!-- if the users strikes is more then 0 we will  -->
+
+	<!-- if the users strikes is more then 0, will  -->
 	<!-- dispalay the question in order from the array. track by index will also show any duplicates if there are any.  -->
 	<!-- index = idx will show each index one by one  -->
 	<div class="container" ng-controller="myCtrl">
-		<p>
+		<p class="info" ng-show = "!winnersEnd">  <!-- if user wins, span will hide -->
 			<span>Timer: {{counter}}</span>
 			<span>Strikes: {{user.strike}}</span>
 			<span>Points: {{user.points}}</span>
 		</p>
+
 		<ul ng-if="user.strike !== 0">
 			<li ng-repeat="obj in qs track by $index" ng-show="$index === idx">
 				<p class="question">{{obj.question}}</p>
-				<hr>
-				<ul>
+
 					<!-- display the answers array from the object. -->
 					<!-- when an answer is clicked it willl invoke the function in the controller and pass in the current question and correct answer. -->
+				<ul>
 					<li ng-repeat="answer in obj.answers track by $index" ng-click="correctAnswer(answer, obj.correct)">
            {{answer}}
           </li>
 				</ul>
-				<button type="button" name="button" ng-click="filterArr(obj)" ng-hide="helpFromAudience">Help</button>
 
+				<button type="button" name="button" ng-click="filterArr(obj)" ng-hide="helpFromAudience">One lifeline</button>
 			</li>
 		</ul>
-		<p ng-show="stop">Sorry, You lose</p>
-		<p ng-show="winner">CONGRATS!! Your Points: {{user.points}}</p>
+		<p class="end" ng-show="stop">Sorry end of game</p>
+		<p class="end" ng-show="winner">CONGRATS!!! You got {{user.points}} out of 100 points</p>
 
 	</div>
 	<script src="app.js"></script>
