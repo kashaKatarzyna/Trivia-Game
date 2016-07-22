@@ -13,6 +13,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       templateUrl: '/templates/game.html',
       controller: 'myCtrl'
     })
+
+    $urlRouterProvider.otherwise('login');
 }]);  //config closing
 
 

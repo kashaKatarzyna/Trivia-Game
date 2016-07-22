@@ -1,1 +1,12 @@
-login
+
+<div class="container" ng-controller="loginCtrl">
+  <form>
+  <label>Username</label>
+    <input type="text" name="username" ng-model="user.username" required>
+
+  <label>Passwrod</label>
+    <input type="password" name="password" ng-model="user.password" required>
+
+    <button type="submit">Log In</button>
+  </form>
+</div>
