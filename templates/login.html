@@ -1,19 +1,29 @@
 
-<div class="container" ng-controller="loginCtrl">
-  <form>
-  <label>Username</label>
-    <input type="text" name="username" ng-model="users.username" required>
+<div class="container" ng-controller="loginCtrl" ng-submit="login()" >
 
-  <label>Passwrod</label>
-    <input type="password" name="password" ng-model="users.password" required>
+  <form class="form" name="loginForm" novalidate>
 
-    <button type="submit" ng-click="submit()">Log In</button>
+    <div class="username" ng-class="{'has-error': loginForm.username.$invalid && loginForm.username.$dirty, 
+                                     'has-success': loginForm.username.$valid && loginForm.username.$dirty}">
+      <label>Username</label>
+      <input type="text" name="username" ng-model="user.username" required >
+    </div>
+    
+
+    <div class="password" ng-class="{'has-error': loginForm.password.$invalid && loginForm.password.$dirty, 
+                                     'has-success': loginForm.password.$valid && loginForm.password.$dirty}">
+      <label>Passwrod</label>
+      <input type="password" name="password" ng-model="user.password" required>
+    </div>
+
+    <button type="submit" >Log In</button>
   </form>
+</div>
 
+
+<!-- displaying users -->
   <div class="displayingUsers">
     <ul ng-repeat='user in users'>
     <li>{{user.username}}</li>
     </ul> 
   </div>
-  
-</div>

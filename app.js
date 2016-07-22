@@ -5,7 +5,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
   $stateProvider
     .state('login', {
       url: '/login',
-      templateUrl: '/tempaltes/login.html',
+      templateUrl: '/templates/login.html',
       controller: 'loginCtrl'
     })
     .state('game', {
