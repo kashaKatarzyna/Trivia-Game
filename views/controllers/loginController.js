@@ -1,4 +1,4 @@
-app.controller('loginCtrl',['$scope', 'login', function($scope, login){
+app.controller('loginCtrl',['$scope', '$state' 'login', function($scope, $state, login){
 
 
 }]); //contoller closing
