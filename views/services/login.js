@@ -2,16 +2,16 @@ app.factory('login', function(){
 
   var users = [
     {
-      username:
-      password:
+      username: "username1",
+      password: 111
     },
     {
-      username:
-      password:
+      username: "username2",
+      password: 222
     },
     {
-      username:
-      password:
+      username: "username3",
+      password: 333
     },
   ];
 
