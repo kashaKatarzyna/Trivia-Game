@@ -1,19 +1,17 @@
 
-<div class="container" ng-controller="loginCtrl" ng-submit="login()" >
-
-  <form class="form" name="loginForm" novalidate>
+<div class="container" ng-controller="loginCtrl"  >
+  <form name="loginForm" ng-submit="login()">
 
     <div class="username" ng-class="{'has-error': loginForm.username.$invalid && loginForm.username.$dirty, 
                                      'has-success': loginForm.username.$valid && loginForm.username.$dirty}">
-      <label>Username</label>
-      <input type="text" name="username" ng-model="user.username" required >
+      <label for="username">Username</label>
+      <input type="text" name="username"  placeholder="Username" ng-model="user.username" required ng-minlength="5" ng-maxlength="10">
     </div>
-    
-
+  
     <div class="password" ng-class="{'has-error': loginForm.password.$invalid && loginForm.password.$dirty, 
-                                     'has-success': loginForm.password.$valid && loginForm.password.$dirty}">
-      <label>Passwrod</label>
-      <input type="password" name="password" ng-model="user.password" required>
+                                     'has-success': loginForm.password.$valid && loginForm.password.$dirty}">          
+      <label for="password">Passwrod</label>
+      <input type="password" name="password"  class="placeholder" placeholder= "Password" ng-model="user.password" required ng-minlength="3" ng-maxlength="10">
     </div>
 
     <button type="submit" >Log In</button>
@@ -24,6 +22,6 @@
 <!-- displaying users -->
   <div class="displayingUsers">
     <ul ng-repeat='user in users'>
-    <li>{{user.username}}</li>
+    <li>{{user}}</li>
     </ul> 
   </div>

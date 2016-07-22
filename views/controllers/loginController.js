@@ -1,11 +1,20 @@
-app.controller('loginCtrl',['$scope', '$state', function($scope, $state){
+app.controller('loginCtrl',['$scope','enter', function($scope, enter){
 
-  $scope.username = "hey";
-  console.log($scope.username);
+  $scope.user = {};
+// console.log($scope.user);
 
   $scope.login = function(){
+    
     if($scope.loginForm.$valid){
-      console.log("doing the form");
+      enter.login($scope.user);
+
+  // console.log($scope.user);
+  console.log("doing the form");
+
+      $scope.user = "";
+      
+    } else {
+      console.log("error")
     }
 
   }
@@ -13,4 +22,3 @@ app.controller('loginCtrl',['$scope', '$state', function($scope, $state){
 
 }]); //contoller closing
 
-// in controller have to inject service
