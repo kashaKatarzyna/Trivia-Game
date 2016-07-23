@@ -1,24 +1,30 @@
 
-<div class="container" class="ng-controller="loginCtrl" >
+<div class="container" ng-controller= "loginCtrl" >
   <div class="login">
     <form name="loginForm" ng-submit="login()">
 
       <div class="username" ng-class="{'has-error': loginForm.username.$invalid && loginForm.username.$dirty, 
                                        'has-success': loginForm.username.$valid && loginForm.username.$dirty}">
+        <i class="fa fa-key"></i>
         <label for="username">Username</label>
         <input type="text" name="username"  placeholder="Username" ng-model="user.username" required ng-minlength="5" ng-maxlength="10">
       </div>
     
+
       <div class="password" ng-class="{'has-error': loginForm.password.$invalid && loginForm.password.$dirty, 
                                        'has-success': loginForm.password.$valid && loginForm.password.$dirty}">          
+        <i class="fa fa-lock"></i>
         <label for="password">Passwrod</label>
         <input type="password" name="password"  class="placeholder" placeholder= "Password" ng-model="user.password" required ng-minlength="3" ng-maxlength="10">
       </div>
+
 
       <button class="help" type="submit" >Log In</button>
     </form>
     <span class="error" ng-show="error">{{error}}</span>
     <button class="tryagain" ng-show="error" ng-click="tryAgain()">Try Again</button>
+    
+    <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
   </div>
 </div>
 

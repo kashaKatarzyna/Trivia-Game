@@ -2,23 +2,25 @@ app.controller('loginCtrl',['$scope','$location', '$window', 'enter', function($
 
   $scope.user = {};
 
+
   $scope.login = function(){
 
     if ($scope.loginForm.$valid){
-
+      
       enter.login($scope.user);
-      $location.path('/game');
+      $scope.dataLoading = true;
       $scope.user = "";
       
     } else {
+
       $scope.error = true;
       $scope.error = "Problems loging in, check username or password";
     }
   };
 
   $scope.tryAgain = function(){
-    enter.tryAgain();
     $window.location.reload();
+    $scope.dataLoading = true;
   };
 }]); //contoller closing
 

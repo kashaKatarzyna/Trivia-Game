@@ -74,6 +74,7 @@ app.controller('myCtrl', ['$scope', 'quiz', '$timeout', '$location', '$window', 
     // obj.answers.splice(obj.answers.indexOf(obj.correct), 1);
   };
 
+
 //enables user to restart the game
   $scope.playAgain = function(){
     $window.location.reload();
