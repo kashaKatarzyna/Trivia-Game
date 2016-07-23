@@ -2,10 +2,8 @@
   margin: 0;
   padding: 0;
 	border: 0;
-	text-transform: uppercase;
   font-weight: 300;
-  color: white;
-}
+  }
 
 .picture{
 	top: 0;
@@ -33,6 +31,8 @@
 	width: 60vw;
 	padding: 20px;
   font-family: 'Carrois Gothic SC', sans-serif;
+  color: white;
+  text-transform: uppercase;
 }
 
 .info{
@@ -68,12 +68,14 @@ li li:hover {
 	background: #EEAB00;
 }
 
-button {
-	padding: 10px 100px;
-	cursor: pointer;
-	border: none;
-	font-size: 18px;
-	color: black;
+.help {
+	padding: 10px 31px;
+  cursor: pointer;
+  border: none;
+  font-size: 18px;
+  color: black;
+  text-transform: uppercase;
+  background-color: #EEAB00;
 }
 
 .end{
@@ -81,3 +83,53 @@ button {
 	color: #EEAB00;
 	font-size: 40px;
 }
+
+.tryagain{
+  text-align: center;
+  padding: 4px 8px;
+  cursor: pointer;
+  border: none;
+  font-size: 12px;
+  color: black;
+  text-transform: uppercase;
+  background-color: #E21A35;
+}
+
+.playagain{
+  display: inline-block;
+  text-align: center;
+  padding: 8px;
+  background: #EEAB00;
+  width: 20%;
+  margin-top: 20px;
+}
+
+/*LOGIN TEMPLATE*/
+
+.displayingUsers{
+  color: black;
+}
+
+.username{
+  padding: 20px 20px;
+}
+
+.password{
+  padding: 20px 20px;
+}
+
+input{
+  padding: 18px;
+}
+
+.login{
+  text-align: center;
+}
+
+form{
+  margin-bottom: 23px;
+}
+
+
+
+
