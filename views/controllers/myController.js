@@ -66,12 +66,12 @@ app.controller('myCtrl', ['$scope', 'quiz', '$timeout', '$location', '$window', 
 
 
   // remove help button
+  //remove correct answer
   // assigning new values correct and random
   $scope.filterArr = function(obj) {
     $scope.helpFromAudience = true;
+    obj.answers.splice(obj.answers.indexOf(obj.correct), 1);
     obj.answers = [obj.correct, obj.answers[Math.floor(Math.random() * obj.answers.length)]];
-    //remove coorrect answer
-    // obj.answers.splice(obj.answers.indexOf(obj.correct), 1);
   };
 
 
