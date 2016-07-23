@@ -1,27 +1,25 @@
 
-<div class="container" ng-controller="loginCtrl"  >
-  <form name="loginForm" ng-submit="login()">
+<div class="container" class="ng-controller="loginCtrl" >
+  <div class="login">
+    <form name="loginForm" ng-submit="login()">
 
-    <div class="username" ng-class="{'has-error': loginForm.username.$invalid && loginForm.username.$dirty, 
-                                     'has-success': loginForm.username.$valid && loginForm.username.$dirty}">
-      <label for="username">Username</label>
-      <input type="text" name="username"  placeholder="Username" ng-model="user.username" required ng-minlength="5" ng-maxlength="10">
-    </div>
-  
-    <div class="password" ng-class="{'has-error': loginForm.password.$invalid && loginForm.password.$dirty, 
-                                     'has-success': loginForm.password.$valid && loginForm.password.$dirty}">          
-      <label for="password">Passwrod</label>
-      <input type="password" name="password"  class="placeholder" placeholder= "Password" ng-model="user.password" required ng-minlength="3" ng-maxlength="10">
-    </div>
+      <div class="username" ng-class="{'has-error': loginForm.username.$invalid && loginForm.username.$dirty, 
+                                       'has-success': loginForm.username.$valid && loginForm.username.$dirty}">
+        <label for="username">Username</label>
+        <input type="text" name="username"  placeholder="Username" ng-model="user.username" required ng-minlength="5" ng-maxlength="10">
+      </div>
+    
+      <div class="password" ng-class="{'has-error': loginForm.password.$invalid && loginForm.password.$dirty, 
+                                       'has-success': loginForm.password.$valid && loginForm.password.$dirty}">          
+        <label for="password">Passwrod</label>
+        <input type="password" name="password"  class="placeholder" placeholder= "Password" ng-model="user.password" required ng-minlength="3" ng-maxlength="10">
+      </div>
 
-    <button type="submit" >Log In</button>
-  </form>
+      <button class="help" type="submit" >Log In</button>
+    </form>
+    <span class="error" ng-show="error">{{error}}</span>
+    <button class="tryagain" ng-show="error" ng-click="tryAgain()">Try Again</button>
+  </div>
 </div>
 
 
-<!-- displaying users -->
-  <div class="displayingUsers">
-    <ul ng-repeat='user in users'>
-    <li>{{user}}</li>
-    </ul> 
-  </div>

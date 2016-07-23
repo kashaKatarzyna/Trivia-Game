@@ -1,5 +1,5 @@
 //cntrl holds all the logic
-app.controller('myCtrl', ['$scope', 'quiz', '$timeout', function($scope, quiz, $timeout) {
+app.controller('myCtrl', ['$scope', 'quiz', '$timeout', '$location', '$window', function($scope, quiz, $timeout, $location, $window) {
   $scope.qs = quiz;
   $scope.idx = 0;
   $scope.counter = 60;
@@ -46,15 +46,18 @@ app.controller('myCtrl', ['$scope', 'quiz', '$timeout', function($scope, quiz, $
     if ($scope.user.strike === 0) {
       $scope.stop = true;
       $scope.winnersEnd = true;
-
+      $scope.playagain = true;
+      
     } else {
       $scope.idx++;
 
-      if($scope.idx === $scope.qs.length){
+      if ($scope.idx === $scope.qs.length){
        $timeout.cancel(timeout)
        $scope.winner = true;
-       $scope.winnersEnd = true;  
-      } else{
+       $scope.winnersEnd = true;
+       $scope.playagain = true;
+
+      } else {
         $scope.winner = false;
       }
     }
@@ -69,6 +72,12 @@ app.controller('myCtrl', ['$scope', 'quiz', '$timeout', function($scope, quiz, $
     obj.answers = [obj.correct, obj.answers[Math.floor(Math.random() * obj.answers.length)]];
     //remove coorrect answer
     // obj.answers.splice(obj.answers.indexOf(obj.correct), 1);
+  };
+
+//enables user to restart the game
+  $scope.playAgain = function(){
+    $window.location.reload();
+    $location.path('/game');
   };
   
 }]);  //myCtr closing

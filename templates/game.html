@@ -20,9 +20,10 @@
           </li>
         </ul>
 
-        <button type="button" name="button" ng-click="filterArr(obj)" ng-hide="helpFromAudience">One lifeline</button>
+        <button class="help" type="button" name="button" ng-click="filterArr(obj)" ng-hide="helpFromAudience">One lifeline</button>
       </li>
     </ul>
     <p class="end" ng-show="stop">Sorry end of game</p>
     <p class="end" ng-show="winner">CONGRATS!!! You got {{user.points}} out of 100 points</p>
+    <button class="playagain" ng-show="playagain" ng-click="playAgain()">Play Again</button>
   </div>
