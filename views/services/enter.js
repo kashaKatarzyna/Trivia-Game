@@ -19,7 +19,7 @@ angular.module('trivia-app').service('enter', ['$http', '$window', '$location', 
 
     angular.forEach(users, function(val){
 
-      if(user.username == val.username && 
+      if (user.username == val.username && 
          user.password == val.password) {
 
         $location.path('/game');
@@ -27,6 +27,7 @@ angular.module('trivia-app').service('enter', ['$http', '$window', '$location', 
       } else {
 
         $window.location.reload();
+        alert("Not a user");
       }
     });
   };
