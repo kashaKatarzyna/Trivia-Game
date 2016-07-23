@@ -27,7 +27,6 @@ angular.module('trivia-app').service('enter', ['$http', '$window', '$location', 
       } else {
 
         $window.location.reload();
-        alert("Not a user");
       }
     });
   };
