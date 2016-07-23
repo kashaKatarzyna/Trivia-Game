@@ -2,11 +2,10 @@ app.controller('loginCtrl',['$scope','$location', '$window', 'enter', function($
 
   $scope.user = {};
 
-
   $scope.login = function(){
 
     if ($scope.loginForm.$valid){
-      
+
       enter.login($scope.user);
       $scope.dataLoading = true;
       $scope.user = "";

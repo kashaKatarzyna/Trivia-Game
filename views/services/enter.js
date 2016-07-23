@@ -7,27 +7,28 @@ angular.module('trivia-app').service('enter', ['$http', '$window', '$location', 
     },
     {
       username: "username2",
-      password: 222222
+      password: 222
     },
     {
       username: "username3",
-      password: 333333
+      password: 333
     },
   ];
 
   this.login = function(user){
 
-    for (var i = 0; i < users.length; i++){
+    angular.forEach(users, function(val){
 
-      if (user.username !== users[i].username){
-        console.log("wrong username");
-        $window.location.reload();
-        
-      } else {
+      if(user.username == val.username && 
+         user.password == val.password) {
 
         $location.path('/game');
-      };
-    };
+
+      } else {
+
+        $window.location.reload();
+      }
+    });
   };
 
 }]); //factory closing
